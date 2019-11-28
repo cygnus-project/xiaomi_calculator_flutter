@@ -38,94 +38,15 @@ class XiaomiCalculator extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 1,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Expanded(
-                    flex: 2,
-                    child: Icon(Icons.compare_arrows),
-                  ),
-                  Expanded(
-                      flex: 3,
-                      child: Text(
-                        'Calculator',
-                        textAlign: TextAlign.center,
-                      )),
-                  Expanded(
-                      flex: 3,
-                      child: Text(
-                        'Life',
-                        textAlign: TextAlign.center,
-                      )),
-                  Expanded(
-                      flex: 3,
-                      child: Text(
-                        'Finance',
-                        textAlign: TextAlign.center,
-                      )),
-                  Expanded(flex: 2, child: Icon(Icons.more_vert)),
-                ],
-              ),
+              child: ActionsBar(),
             ),
-            Expanded(
-              flex: 3,
-              child: Text('0')
-            ),
+            ResultsSpace(),
             Divider(
               color: Colors.grey,
             ),
             Expanded(
               flex: 6,
-              child: GridView.count(
-                crossAxisSpacing: 10,
-                crossAxisCount: 4,
-                children: <Widget>[
-                  CalculatorKey(
-                    'AC',
-                    textColor: Colors.deepOrange,
-                  ),
-                  CalculatorKey(
-                    '<-',
-                    textColor: Colors.deepOrange,
-                  ),
-                  CalculatorKey(
-                    '%',
-                    textColor: Colors.deepOrange,
-                  ),
-                  CalculatorKey(
-                    '/',
-                    textColor: Colors.deepOrange,
-                  ),
-                  CalculatorKey('7'),
-                  CalculatorKey('8'),
-                  CalculatorKey('9'),
-                  CalculatorKey(
-                    'x',
-                    textColor: Colors.deepOrange,
-                  ),
-                  CalculatorKey('4'),
-                  CalculatorKey('5'),
-                  CalculatorKey('6'),
-                  CalculatorKey(
-                    '-',
-                    textColor: Colors.deepOrange,
-                  ),
-                  CalculatorKey('1'),
-                  CalculatorKey('2'),
-                  CalculatorKey('3'),
-                  CalculatorKey(
-                    '+',
-                    textColor: Colors.deepOrange,
-                  ),
-                  CalculatorKey('P'),
-                  CalculatorKey('0'),
-                  CalculatorKey('.'),
-                  CalculatorKey(
-                    '=',
-                    textColor: Colors.deepOrange,
-                  ),
-                ],
-              ),
+              child: CalculatorKeyGrid(),
             ),
           ],
         ),
@@ -134,12 +55,159 @@ class XiaomiCalculator extends StatelessWidget {
   }
 }
 
+class ResultsSpace extends StatelessWidget {
+  const ResultsSpace({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(flex: 3, child: Align(alignment: Alignment.bottomRight,child: Text(' 0 ', textAlign: TextAlign.center,style: TextStyle(fontSize: 64),)));
+  }
+}
+
+class ActionsBar extends StatelessWidget {
+  const ActionsBar({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        Expanded(
+          flex: 2,
+          child: Icon(Icons.compare_arrows),
+        ),
+        Expanded(
+            flex: 3,
+            child: Text(
+              'Calculator',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.deepOrangeAccent, fontSize: 20),
+            )),
+        Expanded(
+            flex: 3,
+            child: Text(
+              'Life',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.black, fontSize: 20),
+            )),
+        Expanded(
+            flex: 3,
+            child: Text(
+              'Finance',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.black, fontSize: 20),
+            )),
+        Expanded(flex: 2, child: Icon(Icons.more_vert)),
+      ],
+    );
+  }
+}
+
+class CalculatorKeyGrid extends StatelessWidget {
+  const CalculatorKeyGrid({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.count(
+      crossAxisSpacing: 10,
+      crossAxisCount: 4,
+      children: <Widget>[
+        CalculatorKey(
+          Text('AC',
+          style: TextStyle(color: Colors.deepOrangeAccent, fontSize: 30),)
+        ),
+        CalculatorKey(
+          Icon(Icons.backspace, color: Colors.deepOrangeAccent,)
+        ),
+        CalculatorKey(
+          Text('%',
+          style: TextStyle(color: Colors.deepOrangeAccent, fontSize: 30),),
+        ),
+        CalculatorKey(
+          Image.network('https://png.pngtree.com/svg/20161129/division_1251695.png',color: Colors.deepOrangeAccent,width: 21, height: 21,)
+        ),
+        
+        CalculatorKey(
+          Text('7',
+          style: TextStyle(color: Colors.black, fontSize: 30),),
+        ),
+        CalculatorKey(
+          Text('8',
+          style: TextStyle(color: Colors.black, fontSize: 30),),
+        ),
+        CalculatorKey(
+          Text('9',
+          style: TextStyle(color: Colors.black, fontSize: 30),),
+        ),
+        CalculatorKey(
+          Text('x',
+          style: TextStyle(color: Colors.deepOrangeAccent, fontSize: 30),),
+        ),
+        CalculatorKey(
+          Text('4',
+          style: TextStyle(color: Colors.black, fontSize: 30),),
+        ),
+        CalculatorKey(
+          Text('5',
+          style: TextStyle(color: Colors.black, fontSize: 30),),
+        ),
+        CalculatorKey(
+          Text('6',
+          style: TextStyle(color: Colors.black, fontSize: 30),),
+        ),
+        CalculatorKey(
+          Text('-',
+          style: TextStyle(color: Colors.deepOrangeAccent, fontSize: 30),),
+        ),
+        CalculatorKey(
+          Text('1',
+          style: TextStyle(color: Colors.black, fontSize: 30),),
+        ),
+        CalculatorKey(
+          Text('2',
+          style: TextStyle(color: Colors.black, fontSize: 30),),
+        ),
+        CalculatorKey(
+          Text('3',
+          style: TextStyle(color: Colors.black, fontSize: 30),),
+        ),
+        CalculatorKey(
+          Text('+',
+          style: TextStyle(color: Colors.deepOrangeAccent, fontSize: 30),),
+        ),
+        CalculatorKey(
+          Icon(Icons.crop_rotate, color: Colors.deepOrangeAccent,)
+        ),
+        CalculatorKey(
+          Text('0',
+          style: TextStyle(color: Colors.black, fontSize: 30),),
+        ),
+        CalculatorKey(
+          Text('.',
+          style: TextStyle(color: Colors.black, fontSize: 30),),
+        ),
+        CalculatorKey(
+          Text('=',
+          style: TextStyle(color: Colors.white, fontSize: 30),),foreColor: Colors.deepOrangeAccent,
+        ),
+      ],
+    );
+  }
+}
+
 class CalculatorKey extends StatelessWidget {
-  final String keyName;
-  final Color textColor;
-  const CalculatorKey(
-    this.keyName, {
-    this.textColor,
+  final Widget widget;
+  final Color color;
+  final Color foreColor;
+  const CalculatorKey(this.widget,{
+    this.color,
+    this.foreColor,
     Key key,
   }) : super(key: key);
 
@@ -150,18 +218,12 @@ class CalculatorKey extends StatelessWidget {
         print('Inkwell tap');
       },
       child: Container(
-        decoration: BoxDecoration(shape: BoxShape.circle),
+        margin: EdgeInsets.all(15),
+        decoration: BoxDecoration(shape: BoxShape.circle, color: foreColor),
         child: Center(
-          child: Text(
-            keyName,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: textColor == null ? Colors.black : textColor,
-              fontSize: 30,
-            ),
+          child: widget
           ),
         ),
-      ),
     );
   }
 }
